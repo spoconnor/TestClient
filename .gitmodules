@@ -1,0 +1,6 @@
+[submodule "Deps/AwGraphics"]
+	path = Deps/AwGraphics
+	url = https://github.com/amulware/awgraphics.git
+[submodule "Deps/Lidren-Network"]
+	path = Deps/Lidren-Network
+	url = https://github.com/lidgren/lidgren-network-gen3.git

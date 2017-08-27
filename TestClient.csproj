@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{F28CB73E-3214-4465-BC38-C5350B3F221B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TestClient</RootNamespace>
+    <AssemblyName>TestClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK">
+      <HintPath>packages\OpenTK.2.0.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting" />
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Deps\AwGraphics\src\amulware.Graphics\amulware.Graphics.csproj">
+      <Project>{59BEDA5C-D68A-4011-89BA-C09421D22974}</Project>
+      <Name>amulware.Graphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Deps\Lidren-Network\Lidgren.Network\Lidgren.Network.csproj">
+      <Project>{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}</Project>
+      <Name>Lidgren.Network</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntryPoint.cs" />
+    <Compile Include="TheGame.cs" />
+    <Compile Include="UserSettings.cs" />
+    <Compile Include="Utilities\Console\CommandAttribute.cs" />
+    <Compile Include="Utilities\Console\CommandParameters.cs" />
+    <Compile Include="Utilities\Console\ConsoleCommands.cs" />
+    <Compile Include="Constants\Paths.cs" />
+    <Compile Include="Utilities\Events.cs" />
+    <Compile Include="Screens\ConsoleScreenLayer.cs" />
+    <Compile Include="Screens\UIScreenLayer.cs" />
+    <Compile Include="Screens\ScreenLayer.cs" />
+    <Compile Include="Screens\StartScreen.cs" />
+    <Compile Include="Screens\ScreenManager.cs" />
+    <Compile Include="Screens\ScreenLayerGroup.cs" />
+    <Compile Include="Screens\ScreenLayerCollection.cs" />
+    <Compile Include="Utilities\Input\InputState.cs" />
+    <Compile Include="Utilities\Input\InputManager.cs" />
+    <Compile Include="Utilities\AsyncAtomicUpdating.cs" />
+    <Compile Include="Rendering\DeferredRenderer.cs" />
+    <Compile Include="Rendering\FrameCompositor.cs" />
+    <Compile Include="Rendering\GameSurfaceManager.cs" />
+    <Compile Include="Rendering\GeometryManager.cs" />
+    <Compile Include="Rendering\RenderContext.cs" />
+    <Compile Include="Rendering\RenderOptions.cs" />
+    <Compile Include="Rendering\SurfaceExtensions.cs" />
+    <Compile Include="Rendering\SurfaceManager.cs" />
+    <Compile Include="Rendering\ViewportSize.cs" />
+    <Compile Include="Rendering\Deferred\LevelVertex.cs" />
+    <Compile Include="Rendering\Deferred\PointLightGeometry.cs" />
+    <Compile Include="Rendering\Deferred\PointLightVertex.cs" />
+    <Compile Include="Utilities\Misc.cs" />
+    <Compile Include="Utilities\Extensions.cs" />
+    <Compile Include="UI\AnchoredFixedSizeDimension.cs" />
+    <Compile Include="UI\Bounds.cs" />
+    <Compile Include="UI\BoundsHelpers.cs" />
+    <Compile Include="UI\FixedOffsetDimension.cs" />
+    <Compile Include="UI\FixedSizeDimension.cs" />
+    <Compile Include="UI\IDimension.cs" />
+    <Compile Include="UI\ScalingDimension.cs" />
+    <Compile Include="UI\Screen.cs" />
+    <Compile Include="UI\Components\Button.cs" />
+    <Compile Include="UI\Components\ChatComponent.cs" />
+    <Compile Include="UI\Components\CompositeComponent.cs" />
+    <Compile Include="UI\Components\ConsoleTextBox.cs" />
+    <Compile Include="UI\Components\FocusContainer.cs" />
+    <Compile Include="UI\Components\FocusableUIComponent.cs" />
+    <Compile Include="UI\Components\IFocusable.cs" />
+    <Compile Include="UI\Components\InjectedTextBox.cs" />
+    <Compile Include="UI\Components\Menu.cs" />
+    <Compile Include="UI\Components\TextBox.cs" />
+    <Compile Include="UI\Components\TextInput.cs" />
+    <Compile Include="UI\Components\UIComponent.cs" />
+    <Compile Include="Constants\UI.cs" />
+    <Compile Include="Constants\Network.cs" />
+    <Compile Include="Constants\Camera.cs" />
+    <Compile Include="Utilities\XY.cs" />
+    <Compile Include="Utilities\TypeExtensions.cs" />
+    <Compile Include="Utilities\SpaceTimeExtensions.cs" />
+    <Compile Include="Utilities\NetworkHelpers.cs" />
+    <Compile Include="Utilities\LinqExtensions.cs" />
+    <Compile Include="Utilities\Line.cs" />
+    <Compile Include="Utilities\INamed.cs" />
+    <Compile Include="Utilities\IdCollection.cs" />
+    <Compile Include="Utilities\EnumerableProxy.cs" />
+    <Compile Include="Utilities\DeconstructionExtensions.cs" />
+    <Compile Include="Utilities\DebugAssert.cs" />
+    <Compile Include="Utilities\Input\InputManager.Actions.Mouse.cs" />
+    <Compile Include="Utilities\Input\InputManager.Actions.Keyboard.cs" />
+    <Compile Include="Utilities\Input\InputManager.Actions.Gamepad.cs" />
+    <Compile Include="Utilities\Input\InputManager.Actions.cs" />
+    <Compile Include="Utilities\Input\InputContext.cs" />
+    <Compile Include="Utilities\Input\InputAction.cs" />
+    <Compile Include="Utilities\Input\IAction.cs" />
+    <Compile Include="Utilities\Input\GamePadStateManager.cs" />
+    <Compile Include="Utilities\Input\Actions\DigitalAction.cs" />
+    <Compile Include="Utilities\Input\Actions\DummyAction.cs" />
+    <Compile Include="Utilities\Input\Actions\GamePadAction.cs" />
+    <Compile Include="Utilities\Input\Actions\KeyboardAction.cs" />
+    <Compile Include="Utilities\Input\Actions\LambdaAction.cs" />
+    <Compile Include="Utilities\Input\Actions\MouseAction.cs" />
+    <Compile Include="Library\Algorithms\BinPacking.cs" />
+    <Compile Include="Library\Algorithms\HungarianAlgorithm.cs" />
+    <Compile Include="Library\Collections\DeletableObjectList.cs" />
+    <Compile Include="Library\Collections\DeletableObjectListEnumerator.cs" />
+    <Compile Include="Library\Collections\IDeletable.cs" />
+    <Compile Include="Library\Collections\IIdable.cs" />
+    <Compile Include="Library\Collections\IdDictionary.cs" />
+    <Compile Include="Library\Collections\MutableLinkedList.cs" />
+    <Compile Include="Library\Collections\MutableLinkedListEnumerator.cs" />
+    <Compile Include="Library\Collections\MutableLinkedListItem.cs" />
+    <Compile Include="Library\Collections\MutableLinkedListNode.cs" />
+    <Compile Include="Library\Collections\PrefixTrie.cs" />
+    <Compile Include="Library\Collections\PriorityQueue.cs" />
+    <Compile Include="Library\Collections\StaticPriorityQueue.cs" />
+    <Compile Include="Library\Core\Box.cs" />
+    <Compile Include="Library\Core\Do.cs" />
+    <Compile Include="Library\Core\Environment.cs" />
+    <Compile Include="Library\Core\EventHandlers.cs" />
+    <Compile Include="Library\Core\Id.cs" />
+    <Compile Include="Library\Core\IdManager.cs" />
+    <Compile Include="Library\Core\RandomExtensions.cs" />
+    <Compile Include="Library\Core\ResettableLazy.cs" />
+    <Compile Include="Library\Core\Singleton.cs" />
+    <Compile Include="Library\Core\StaticRandom.cs" />
+    <Compile Include="Library\Core\Void.cs" />
+    <Compile Include="Library\IO\FileModifiedWatcher.cs" />
+    <Compile Include="Library\Input\DigitalAction.cs" />
+    <Compile Include="Library\Input\DummyAction.cs" />
+    <Compile Include="Library\Input\GamePadAction.cs" />
+    <Compile Include="Library\Input\IAction.cs" />
+    <Compile Include="Library\Input\InputAction.cs" />
+    <Compile Include="Library\Input\InputManager.cs" />
+    <Compile Include="Library\Input\KeyboardAction.cs" />
+    <Compile Include="Library\Input\LambdaAction.cs" />
+    <Compile Include="Library\Input\MouseAction.cs" />
+    <Compile Include="Library\Linq\Extensions.cs" />
+    <Compile Include="Library\Math\Angle.cs" />
+    <Compile Include="Library\Math\Arc.cs" />
+    <Compile Include="Library\Math\Direction2.cs" />
+    <Compile Include="Library\Math\Extensions.cs" />
+    <Compile Include="Library\Math\Interpolate.cs" />
+    <Compile Include="Library\Math\Interval.cs" />
+    <Compile Include="Library\Math\Mathf.cs" />
+    <Compile Include="Library\Math\Geometry\PolarPosition.cs" />
+    <Compile Include="Library\Math\Geometry\Rectangle.cs" />
+    <Compile Include="Library\Math\Geometry\arcs\Arc2.cs" />
+    <Compile Include="Library\Math\Geometry\arcs\Arc3.cs" />
+    <Compile Include="Library\Math\Geometry\arcs\Bezier2nd2.cs" />
+    <Compile Include="Library\Math\Geometry\arcs\Bezier2nd3.cs" />
+    <Compile Include="Library\Math\Geometry\arcs\Bezier3rd2.cs" />
+    <Compile Include="Library\Math\Geometry\arcs\Bezier3rd3.cs" />
+    <Compile Include="Library\SpaceTime\Extensions.cs" />
+    <Compile Include="Library\SpaceTime\Squared.cs" />
+    <Compile Include="Library\SpaceTime\2d\Acceleration2.cs" />
+    <Compile Include="Library\SpaceTime\2d\Difference2.cs" />
+    <Compile Include="Library\SpaceTime\2d\Position2.cs" />
+    <Compile Include="Library\SpaceTime\2d\Velocity2.cs" />
+    <Compile Include="Library\SpaceTime\angular\AngularAcceleration.cs" />
+    <Compile Include="Library\SpaceTime\angular\AngularVelocity.cs" />
+    <Compile Include="Library\SpaceTime\time\Instant.cs" />
+    <Compile Include="Library\SpaceTime\time\TimeSpan.cs" />
+    <Compile Include="Library\SpaceTime\undirected\Acceleration.cs" />
+    <Compile Include="Library\SpaceTime\undirected\Speed.cs" />
+    <Compile Include="Library\SpaceTime\undirected\Unit.cs" />
+    <Compile Include="Library\Threading\BackgroundActionQueue.cs" />
+    <Compile Include="Library\Threading\IActionQueue.cs" />
+    <Compile Include="Library\Threading\ManualActionQueue.cs" />
+    <Compile Include="Library\Tilemaps\Step.cs" />
+    <Compile Include="Library\Tilemaps\Rectangular\Direction.cs" />
+    <Compile Include="Library\Tilemaps\Rectangular\Directions.cs" />
+    <Compile Include="Library\Tilemaps\Rectangular\Extensions.cs" />
+    <Compile Include="Library\Tilemaps\Rectangular\Tile.cs" />
+    <Compile Include="Library\Tilemaps\Rectangular\Tilemap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utilities\" />
+    <Folder Include="Utilities\Console\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Screens\" />
+    <Folder Include="Utilities\Input\" />
+  </ItemGroup>
+</Project>
