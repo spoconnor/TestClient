@@ -153,7 +153,7 @@ namespace TestClient.Library.Linq
         public static bool TryGetTransformedValue<TKey, TValue, TNewValue>(this Dictionary<TKey, TValue> dictionary, TKey key, out TNewValue result,
             Func<TValue, TNewValue> transform)
         {
-            var value;
+            TValue value;
             if (dictionary.TryGetValue(key, out value))
             {
                 result = transform(value);
@@ -180,7 +180,7 @@ namespace TestClient.Library.Linq
 
         public static TValue ValueOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key)
         {
-            var value;
+            TValue value;
             dict.TryGetValue(key, out value);
             return value;
         }

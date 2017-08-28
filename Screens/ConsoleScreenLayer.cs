@@ -9,6 +9,7 @@ using TestClient.UI.Components;
 using TestClient.Library;
 using TestClient.Utilities.Input;
 using TestClient.UI;
+using TestClient.Utilities.Console;
 
 namespace TestClient.Screens
 {
@@ -74,7 +75,7 @@ namespace TestClient.Screens
         {
             addToHistory(command);
 
-            logger.Info.Log("> {0}", command);
+            logger.Info("> {0}", command);
 
             var split = command.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
             if (split.Length == 0)
@@ -83,7 +84,7 @@ namespace TestClient.Screens
 
             if (!ConsoleCommands.TryRun(split[0], logger, new CommandParameters(args)))
             {
-                logger.Error.Log("Command not found.");
+                logger.Error("Command not found.");
             }
 
             consoleInput.Text = "";
@@ -125,8 +126,8 @@ namespace TestClient.Screens
 
             if (extended == null)
             {
-                logger.Info.Log($"> {trimmed}");
-                logger.Warn.Log("No commands found.");
+                logger.Info($"> {trimmed}");
+                logger.Warn("No commands found.");
                 return trimmed;
             }
 
@@ -142,8 +143,8 @@ namespace TestClient.Screens
             if (extended == trimmed)
             {
                 var availableCommands = ConsoleCommands.Prefixes.AllKeys(extended);
-                logger.Info.Log("> {0}", trimmed);
-                foreach (var command in availableCommands) logger.Info.Log(command);
+                logger.Info("> {0}", trimmed);
+                foreach (var command in availableCommands) logger.Info(command);
             }
 
             return extended;
@@ -163,8 +164,8 @@ namespace TestClient.Screens
 
             if (parameterPrefixes == null)
             {
-                logger.Info.Log($"> {incompleteCommand}");
-                logger.Warn.Log("No parameters for command known.");
+                logger.Info($"> {incompleteCommand}");
+                logger.Warn("No parameters for command known.");
                 return incompleteCommand;
             }
 
@@ -173,8 +174,8 @@ namespace TestClient.Screens
 
             if (extended == null)
             {
-                logger.Info.Log($"> {incompleteCommand}");
-                logger.Warn.Log("No matching parameters found.");
+                logger.Info($"> {incompleteCommand}");
+                logger.Warn("No matching parameters found.");
                 return incompleteCommand;
             }
 
@@ -185,8 +186,8 @@ namespace TestClient.Screens
                 return $"{command} {extended}";
 
             var availableParameters = parameterPrefixes.AllKeys(extended);
-            logger.Info.Log($"> {command} {extended}");
-            foreach (var p in availableParameters) logger.Info.Log(p);
+            logger.Info($"> {command} {extended}");
+            foreach (var p in availableParameters) logger.Info(p);
 
             return $"{command} {extended}";
         }

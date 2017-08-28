@@ -15,16 +15,16 @@ namespace TestClient.Utilities.Input
 
         private bool windowWasActiveLastUpdate;
 
-//        public ReadOnlyCollection<GamePadStateManager> GamePads { get; }
+        public ReadOnlyCollection<GamePadStateManager> GamePads { get; }
 
         public InputManager(MouseDevice mouse)
         {
             this.mouse = mouse;
 
-//            this.GamePads = Enumerable.Range(0, int.MaxValue - 1)
-//                .TakeWhile(i => GamePad.GetState(i).IsConnected)
-//                .Select(GamePadStateManager.ForId)
-//                .ToList().AsReadOnly();
+            this.GamePads = Enumerable.Range(0, int.MaxValue - 1)
+                .TakeWhile(i => GamePad.GetState(i).IsConnected)
+                .Select(GamePadStateManager.ForId)
+                .ToList().AsReadOnly();
         }
 
         public void ProcessEventsAsync()
@@ -32,10 +32,10 @@ namespace TestClient.Utilities.Input
             keyboardState.SetLastKnownState(Keyboard.GetState());
             mouseState.SetLastKnownState(mouse.GetCursorState());
 
-//            foreach (var gamepad in GamePads)
-//            {
-//                gamepad.ProcessEventsAsync();
-//            }
+            foreach (var gamepad in GamePads)
+            {
+                gamepad.ProcessEventsAsync();
+            }
         }
 
         public void Update(bool windowIsActive)
@@ -55,10 +55,10 @@ namespace TestClient.Utilities.Input
                 keyboardState.UpdateToDefault();
             }
 
-//            foreach (var gamepad in GamePads)
-//            {
-//                gamepad.Update(windowIsActive);
-//            }
+            foreach (var gamepad in GamePads)
+            {
+                gamepad.Update(windowIsActive);
+            }
 
             windowWasActiveLastUpdate = windowIsActive;
         }

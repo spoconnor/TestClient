@@ -38,7 +38,7 @@ namespace TestClient
 
         public static void Load(Logger logger)
         {
-            logger.Trace.Log($"Attempting to load settings from settings file: {Constants.Paths.UserSettingsFile}");
+            logger.Debug($"Attempting to load settings from settings file: {Constants.Paths.UserSettingsFile}");
 
             try
             {
@@ -47,19 +47,19 @@ namespace TestClient
                     Instance = serializer.Deserialize<UserSettings>(new JsonTextReader(reader));
                     SettingsChanged?.Invoke();
                 }
-                logger.Trace.Log("Finished loading user settings.");
+                logger.Debug("Finished loading user settings.");
             }
             catch (Exception e)
             {
-                logger.Warn.Log($"Could not load user settings: {e.Message}");
-                logger.Info.Log("Loading default settings.");
+                logger.Warn($"Could not load user settings: {e.Message}");
+                logger.Info("Loading default settings.");
                 Instance = getDefaultInstance();
             }
         }
 
         public static bool Save(Logger logger)
         {
-            logger.Trace.Log($"Attempting to save settings to settings file: {Constants.Paths.UserSettingsFile}");
+            logger.Debug($"Attempting to save settings to settings file: {Constants.Paths.UserSettingsFile}");
 
             try
             {
@@ -76,12 +76,12 @@ namespace TestClient
                     // ReSharper restore AssignNullToNotNullAttribute
                     File.WriteAllText(fileName, writer.ToString());
                 }
-                logger.Trace.Log("Finished saving user settings.");
+                logger.Debug("Finished saving user settings.");
                 return true;
             }
             catch (Exception e)
             {
-                logger.Warn.Log($"Could not save user settings: {e.Message}");
+                logger.Debug($"Could not save user settings: {e.Message}");
             }
             return false;
         }

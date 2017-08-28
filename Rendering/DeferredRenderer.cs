@@ -35,14 +35,14 @@ namespace TestClient.Rendering
             gTarget.Attach(FramebufferAttachment.ColorAttachment1, normalBuffer);
             gTarget.Attach(FramebufferAttachment.ColorAttachment2, depthBuffer);
             gTarget.Attach(FramebufferAttachment.DepthAttachment, depthMaskBuffer);
-            renderTo(gTarget, ScreenCoords(0, 0));
+            renderTo(gTarget, new ScreenCoords(0, 0));
             GL.DrawBuffers(3, new []
             {
                 DrawBuffersEnum.ColorAttachment0,
                 DrawBuffersEnum.ColorAttachment1,
                 DrawBuffersEnum.ColorAttachment2,
             });
-            renderTo(null, ScreenCoords(0, 0));
+            renderTo(null, new ScreenCoords(0, 0));
 
             accumTarget.Attach(FramebufferAttachment.ColorAttachment0, accumBuffer);
 
@@ -138,7 +138,7 @@ namespace TestClient.Rendering
 
         private void compositeTo(RenderTarget target)
         {
-            renderTo(target, ScreenCoords(viewport.Width, viewport.Height));
+            renderTo(target, new ScreenCoords(viewport.Width, viewport.Height));
 
             compositeSurface.Render();
         }
@@ -166,7 +166,7 @@ namespace TestClient.Rendering
             if (viewport == this.viewport && w == bufferSize.X && h == bufferSize.Y)
                 return;
 
-            bufferSize = ScreenCoords(w, h);
+            bufferSize = new ScreenCoords(w, h);
 
             this.viewport = viewport;
             needsResize = true;

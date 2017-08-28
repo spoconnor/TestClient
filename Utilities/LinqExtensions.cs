@@ -14,7 +14,7 @@ namespace TestClient.Utilities
 
         public static TValue ValueOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key)
         {
-            var value;
+            TValue value;
             dict.TryGetValue(key, out value);
             return value;
         }

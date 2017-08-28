@@ -296,21 +296,21 @@ namespace TestClient.Library.Algorithms
         {
             while (true)
             {
-                var (minSlackSource, minSlackDest, minSlackValue) = findMinSlack();
+                var output = findMinSlack();
 
-                if (minSlackValue > 0)
-                    updateLabeling(minSlackValue);
+                if (output.Value > 0)
+                    updateLabeling(output.Value);
 
-                parentSourceByCommittedTarget[minSlackDest] = minSlackSource;
-                if (targetMatches[minSlackDest] == -1)
+                parentSourceByCommittedTarget[output.Destination] = output.Source;
+                if (targetMatches[output.Destination] == -1)
                 {
                     // An augmenting path has been found.
-                    growMatching(minSlackDest);
+                    growMatching(output.Destination);
                     return;
                 }
 
                 // Update slack values since we increased the size of the committed workers set.
-                updateSlackValues(minSlackDest);
+                updateSlackValues(output.Destination);
             }
         }
 

@@ -5,6 +5,7 @@ using NLog;
 using TestClient.UI.Components;
 using TestClient.Utilities.Input;
 using TestClient.Rendering;
+using TestClient.UI;
 
 namespace TestClient.Screens
 {
@@ -42,18 +43,18 @@ namespace TestClient.Screens
 
         private void startServerLobby()
         {
-            Parent.AddScreenLayerOnTopOf(this, new LobbyScreen(
-                Parent,
-                Geometries,
-                new ServerLobbyManager(new ServerNetworkInterface(logger), logger),
-                inputManager));
-            Destroy();
+//            Parent.AddScreenLayerOnTopOf(this, new LobbyScreen(
+//                Parent,
+//                Geometries,
+//                new ServerLobbyManager(new ServerNetworkInterface(logger), logger),
+//                inputManager));
+//            Destroy();
         }
 
         private void startConnect()
         {
-            Parent.AddScreenLayerOnTopOf(this, new ConnectToLobbyScreen(Parent, Geometries, logger, inputManager));
-            Destroy();
+//            Parent.AddScreenLayerOnTopOf(this, new ConnectToLobbyScreen(Parent, Geometries, logger, inputManager));
+//            Destroy();
         }
     }
 }

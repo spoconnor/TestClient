@@ -108,7 +108,7 @@ namespace TestClient.Library.Collections
                 {
                     if (values == null)
                         return null;
-                    var node;
+                    Node node;
                     if (values.TryGetValue(character, out node))
                         return node;
                     return null;

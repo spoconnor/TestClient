@@ -17,7 +17,7 @@ namespace TestClient.Screens
 
     abstract class ScreenLayer : IScreenLayer
     {
-        private const float fovy = Math.PI / 2.0f;
+        private const float fovy = (float)(Math.PI / 2.0f);
         private const float zNear = .1f;
         private const float zFar = 1024f;
 
@@ -33,7 +33,7 @@ namespace TestClient.Screens
         {
             get
             {
-                var yMax = zNear * Math.Tan(.5f * fovy);
+                var yMax = zNear * (float)Math.Tan(.5f * fovy);
                 var yMin = -yMax;
                 var xMax = yMax * ViewportSize.AspectRatio;
                 var xMin = yMin * ViewportSize.AspectRatio;

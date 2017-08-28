@@ -96,7 +96,7 @@ namespace TestClient.Utilities.Input
 
             public IAction FromName(string name)
             {
-                var selector;
+                ButtonSelector selector;
                 return selectors.TryGetValue(name, out selector)
                     ? new GamePadButtonAction(manager, padId, name, selector)
                     : null;
@@ -173,7 +173,7 @@ namespace TestClient.Utilities.Input
 
             public IAction FromName(string name)
             {
-                var selector;
+                AxisSelector selector;
                 return selectors.TryGetValue(name, out selector)
                     ? new GamePadAxisAction(manager, padId, name, selector)
                     : null;

@@ -1,15 +1,18 @@
 ﻿
+using TestClient.Library;
+
 namespace TestClient.Utilities
-{ 
-    class AsyncAtomicUpdating<T> where T : struct
+{
+    class AsyncAtomicUpdating<T>
+        where T : struct
     {
         public T Current { get; private set; }
         public T Previous { get; private set; }
-        private object lastRecorded = new object(default(T));
+        private Box<T> lastRecorded = new Box<T>(default(T));
 
         public void SetLastKnownState(T state)
         {
-            lastRecorded = state;
+            lastRecorded = Do.Box(state);
         }
 
         public void Update() => UpdateTo(lastRecorded.Value);

@@ -1,4 +1,5 @@
 using System;
+using TestClient.Library.Math;
 using OpenTK.Input;
 
 namespace TestClient.Utilities.Input.Actions
