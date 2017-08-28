@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using TestClient.Utilities.Input.Actions;
+using TestClient.Library.Linq;
 
 namespace TestClient.Utilities.Input
 {
