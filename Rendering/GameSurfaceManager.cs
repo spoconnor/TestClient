@@ -20,7 +20,7 @@ namespace TestClient.Rendering
             Matrix4Uniform projection)
         {
             var hex = new IndexedSurface<UVColorVertexData>()
-                .WithShader(shaders["deferred/gSprite"])
+                .WithShader(shaders["Deferred/gSprite"])
                 .AndSettings(
                     view, projection,
                     new TextureUniform("diffuseTexture", new Texture(sprite("hex-diffuse.png")), TextureUnit.Texture0),
@@ -32,8 +32,8 @@ namespace TestClient.Rendering
         }
         
         
-        private static string asset(string path) => "assets/" + path;
-        private static string gfx(string path) => asset("gfx/" + path);
-        private static string sprite(string path) => gfx("sprites/" + path);
+        private static string asset(string path) => "Assets/" + path;
+        private static string gfx(string path) => asset("Gfx/" + path);
+        private static string sprite(string path) => gfx("Sprites/" + path);
     }
 }

@@ -27,7 +27,7 @@ namespace TestClient
 				var game = new TheGame(logger);
 
 				logger.Info("Running game");
-				//game.Run(60);
+			    game.Run(60);
 				logger.Info("Safely exited game");
 			}
 		}

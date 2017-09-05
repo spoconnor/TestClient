@@ -29,16 +29,16 @@ namespace TestClient.Rendering
         public SurfaceManager()
         {
             Shaders.Add(
-                ShaderFileLoader.CreateDefault(asset("shaders/")).Load(".")
+                ShaderFileLoader.CreateDefault(asset("Shaders/")).Load(".")
             );
             new[]
             {
                 "geometry", "uvcolor",
-                "deferred/gSprite",
-                "deferred/gLevel",
-                "deferred/debug",
-                "deferred/compose",
-                "deferred/pointlight"
+                "Deferred/gSprite",
+                "Deferred/gLevel",
+                "Deferred/debug",
+                "Deferred/compose",
+                "Deferred/pointlight"
             }.ForEach(name => Shaders.MakeShaderProgram(name));
 
             Primitives = new IndexedSurface<PrimitiveVertexData>()
@@ -48,28 +48,28 @@ namespace TestClient.Rendering
                 .WithShader(Shaders["geometry"])
                 .AndSettings(ViewMatrix, ProjectionMatrix);
 
-            ConsoleFont = Font.FromJsonFile(font("inconsolata.json"));
+            ConsoleFont = Font.FromJsonFile(font("Inconsolata.json"));
             ConsoleFontSurface = new IndexedSurface<UVColorVertexData>()
                 .WithShader(Shaders["uvcolor"])
                 .AndSettings(
                     ViewMatrix, ProjectionMatrix,
-                    new TextureUniform("diffuse", new Texture(font("inconsolata.png"), preMultiplyAlpha: true))
+                    new TextureUniform("diffuse", new Texture(font("Inconsolata.png"), preMultiplyAlpha: true))
                 );
 
-            UIFont = Font.FromJsonFile(font("helveticaneue.json"));
+            UIFont = Font.FromJsonFile(font("HelveticaNeue.json"));
             UIFontSurface = new IndexedSurface<UVColorVertexData>()
                     .WithShader(Shaders["uvcolor"])
                     .AndSettings(
                         ViewMatrix, ProjectionMatrix,
-                        new TextureUniform("diffuse", new Texture(font("helveticaneue.png"), preMultiplyAlpha: true))
+                        new TextureUniform("diffuse", new Texture(font("HelveticaNeue.png"), preMultiplyAlpha: true))
                     );
 
             LevelSurface = new IndexedSurface<LevelVertex>()
-                .WithShader(Shaders["deferred/gLevel"])
+                .WithShader(Shaders["Deferred/gLevel"])
                 .AndSettings(ViewMatrix, ProjectionMatrix);
             
             PointLights = new IndexedSurface<PointLightVertex>()
-                .WithShader(Shaders["deferred/pointlight"])
+                .WithShader(Shaders["Deferred/pointlight"])
                 .AndSettings(ViewMatrix, ProjectionMatrix);
 
             GameSurfaces = new GameSurfaceManager(Shaders, ViewMatrix, ProjectionMatrix);
@@ -83,8 +83,8 @@ namespace TestClient.Rendering
             PointLights.AddSettings(normalUniform, depthUniform);
         }
 
-        private static string asset(string path) => "assets/" + path;
-        private static string font(string path) => asset("font/" + path);
+        private static string asset(string path) => "Assets/" + path;
+        private static string font(string path) => asset("Font/" + path);
 
     }
 }

@@ -47,7 +47,7 @@ namespace TestClient.Rendering
             accumTarget.Attach(FramebufferAttachment.ColorAttachment0, accumBuffer);
 
             compositeSurface = new PostProcessSurface()
-                .WithShader(surfaces.Shaders["deferred/compose"])
+                .WithShader(surfaces.Shaders["Deferred/compose"])
                 .AndSettings(
                     new TextureUniform("albedoTexture", diffuseBuffer, TextureUnit.Texture0),
                     new TextureUniform("lightTexture", accumBuffer, TextureUnit.Texture1)
@@ -61,7 +61,7 @@ namespace TestClient.Rendering
 
         private IndexedSurface<UVColorVertexData> createDebugSurface(Texture buffer)
             => new IndexedSurface<UVColorVertexData>()
-                .WithShader(surfaces.Shaders["deferred/debug"])
+                .WithShader(surfaces.Shaders["Deferred/debug"])
                 .AndSettings(new TextureUniform("bufferTexture", buffer));
 
         public void Render(RenderTarget target = null)
